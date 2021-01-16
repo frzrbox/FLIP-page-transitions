@@ -1,13 +1,11 @@
 {
-  "name": "FLIP-page-transitions",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-	"start": "npx parcel src/index.html",
-	"build: "npx parcel build src/index.html"
-  },
-  "keywords": [],
-  "author": "frzrbox",
-  "license": "MIT"
+	"name": "flip-page-transitions",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {},
+	"keywords": [],
+	"author": "frzrbox",
+	"license": "MIT",
+	"dependencies": {}
 }
