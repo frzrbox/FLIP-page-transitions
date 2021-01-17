@@ -7,7 +7,7 @@ document.addEventListener('mousemove', (e) => {
 	const projectImages = document.querySelectorAll('.project img');
 
 	projectImages.forEach((image) => {
-		image.style = `--x: ${clientX}px; --y: ${clientY}px;`;
+		image.style = `--mouseX: ${clientX}px; --mouseY: ${clientY}px;`;
 	});
 });
 
@@ -37,11 +37,11 @@ barba.init({
 			to: {
 				namespace: ['project'],
 			},
+
 			enter({ current, next }) {
 				const currentVisibleImage = current.container.querySelector(
 					'.project img[data-visible="true"]'
 				);
-				console.log(currentVisibleImage);
 				const nextImage = next.container.querySelector('img');
 				const currentBounds = currentVisibleImage.getBoundingClientRect();
 				const nextBounds = nextImage.getBoundingClientRect();
@@ -50,34 +50,9 @@ barba.init({
 				const deltaY = currentBounds.top - nextBounds.top;
 				const deltaW = currentBounds.width / nextBounds.width;
 				const deltaH = currentBounds.height / nextBounds.height;
-				// Animate FLIP transition using Web Animaitons API
-				// Example from https://css-tricks.com/animating-layouts-with-the-flip-technique/
 
-				currentVisibleImage.style.opacity = 0;
-
-				nextImage.animate(
-					[
-						{
-							transformOrigin: 'top left',
-							transform: `
-									translate(${deltaX}px, ${deltaY}px)
-									scale(${deltaW}, ${deltaH})
-								`,
-						},
-						{
-							transformOrigin: 'top left',
-							transform: `
-									translate(0, 0)
-									scale(1)
-							   `,
-						},
-					],
-					{
-						duration: 1000,
-						easing: 'cubic-bezier(0.2, 0, 0.2, 1)',
-						fill: 'both',
-					}
-				);
+				// Assign delta values as custom properties
+				nextImage.style = `--deltaX: ${deltaX}px; --deltaY: ${deltaY}px; --deltaW: ${deltaW}; --deltaH: ${deltaH};`;
 			},
 		},
 	],
