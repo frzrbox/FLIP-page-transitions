@@ -51,6 +51,8 @@ barba.init({
 				const deltaW = currentBounds.width / nextBounds.width;
 				const deltaH = currentBounds.height / nextBounds.height;
 
+				currentVisibleImage.style.setProperty('visibility', 'hidden');
+
 				// Assign delta values as custom properties
 				nextImage.style = `--deltaX: ${deltaX}px; --deltaY: ${deltaY}px; --deltaW: ${deltaW}; --deltaH: ${deltaH};`;
 			},
