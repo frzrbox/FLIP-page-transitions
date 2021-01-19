@@ -1,15 +1,3 @@
-// Toggle project image visiblity on hover
-const projectImage = document.querySelector('.project-image');
-const projectLink = document.querySelector('.project-link');
-
-projectLink.addEventListener('mousemove', () => {
-	projectImage.setAttribute('data-visible', true);
-});
-
-projectLink.addEventListener('mouseleave', () => {
-	projectImage.setAttribute('data-visible', false);
-});
-
 // Page Transitions
 barba.init({
 	debug: true,
