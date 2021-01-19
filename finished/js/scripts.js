@@ -30,7 +30,6 @@ barba.init({
 	debug: true,
 	transitions: [
 		{
-			name: 'project-flip',
 			from: {
 				route: '/',
 			},
@@ -38,13 +37,15 @@ barba.init({
 				namespace: ['project'],
 			},
 
-			enter({ current, next }) {
+			afterEnter({ current, next }) {
 				const currentVisibleImage = current.container.querySelector(
 					'.project img[data-visible="true"]'
 				);
 				const nextImage = next.container.querySelector('img');
+
 				const currentBounds = currentVisibleImage.getBoundingClientRect();
 				const nextBounds = nextImage.getBoundingClientRect();
+
 				// Calculate the distsance between the two elements
 				const deltaX = currentBounds.left - nextBounds.left;
 				const deltaY = currentBounds.top - nextBounds.top;

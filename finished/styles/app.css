@@ -5,6 +5,11 @@ body {
 	min-height: 100vh;
 }
 
+main {
+	min-height: 100vh;
+	border: 2px solid red;
+}
+
 a {
 	text-decoration: none;
 	width: fit-content;
@@ -64,10 +69,12 @@ img {
 }
 
 .project-hero img {
+	position: relative;
 	height: 60vh;
 	width: auto;
 	transform-origin: bottom left;
 	animation: heroFLIP 1.4s cubic-bezier(0.39, 0.57, 0.56, 1) both;
+	border: 5px solid red;
 }
 
 @keyframes heroFLIP {
@@ -75,14 +82,17 @@ img {
 		--deltaW: var(--deltaW);
 		--deltaH: var(--deltaH);
 		--deltaX: var(--deltaX);
-		transform: scale(var(--deltaW), var(--deltaH))
-			translate3d(var(--deltaX), 0, 0);
+
+		position: absolute;
+		transform: translate3d(var(--deltaX), var(--deltaY), 0)
+			scale(var(--deltaW), var(--deltaH));
 	}
 	70% {
-		transform: scale(var(--deltaW), var(--deltaH)) translate(0, 0);
+		position: absolute;
+		transform: translate(0, 0) scale(var(--deltaW), var(--deltaH));
 	}
 	100% {
-		transform: scale(1) translate(0, 0);
+		transform: none;
 	}
 }
 
