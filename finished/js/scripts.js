@@ -1,28 +1,21 @@
-const projects = document.querySelectorAll('.project');
+// Move the project image with the position of the cursor
+const projectImage = document.querySelector('.project-image');
 
-// Move the project images with the position of the cursor
 document.addEventListener('mousemove', (e) => {
 	const { clientX, clientY } = e;
 
-	const projectImages = document.querySelectorAll('.project img');
-
-	projectImages.forEach((image) => {
-		image.style = `--mouseX: ${clientX}px; --mouseY: ${clientY}px;`;
-	});
+	projectImage.style = `--mouseX: ${clientX}px; --mouseY: ${clientY}px;`;
 });
 
 // Toggle project image visiblity on hover
-projects.forEach((project) => {
-	const projectImage = project.querySelector('img');
-	const projectHeading = project.querySelector('h2');
+const projectLink = document.querySelector('.project-link');
 
-	projectHeading.addEventListener('mousemove', (e) => {
-		projectImage.setAttribute('data-visible', true);
-	});
+projectLink.addEventListener('mousemove', () => {
+	projectImage.setAttribute('data-visible', true);
+});
 
-	projectHeading.addEventListener('mouseleave', () => {
-		projectImage.setAttribute('data-visible', false);
-	});
+projectLink.addEventListener('mouseleave', () => {
+	projectImage.setAttribute('data-visible', false);
 });
 
 // Page Transitions
@@ -36,8 +29,7 @@ barba.init({
 			to: {
 				namespace: ['project'],
 			},
-
-			afterEnter({ current, next }) {
+			enter({ current, next }) {
 				const currentVisibleImage = current.container.querySelector(
 					'.project img[data-visible="true"]'
 				);
@@ -51,8 +43,6 @@ barba.init({
 				const deltaY = currentBounds.top - nextBounds.top;
 				const deltaW = currentBounds.width / nextBounds.width;
 				const deltaH = currentBounds.height / nextBounds.height;
-
-				currentVisibleImage.style.setProperty('visibility', 'hidden');
 
 				// Assign delta values as custom properties
 				nextImage.style = `--deltaX: ${deltaX}px; --deltaY: ${deltaY}px; --deltaW: ${deltaW}; --deltaH: ${deltaH};`;
