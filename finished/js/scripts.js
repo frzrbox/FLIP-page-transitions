@@ -1,13 +1,5 @@
-// Move the project image with the position of the cursor
-const projectImage = document.querySelector('.project-image');
-
-document.addEventListener('mousemove', (e) => {
-	const { clientX, clientY } = e;
-
-	projectImage.style = `--mouseX: ${clientX}px; --mouseY: ${clientY}px;`;
-});
-
 // Toggle project image visiblity on hover
+const projectImage = document.querySelector('.project-image');
 const projectLink = document.querySelector('.project-link');
 
 projectLink.addEventListener('mousemove', () => {
@@ -31,8 +23,11 @@ barba.init({
 			},
 			enter({ current, next }) {
 				const currentVisibleImage = current.container.querySelector(
-					'.project img[data-visible="true"]'
+					'.project-image'
 				);
+
+				currentVisibleImage.style.visibility = 'hidden';
+
 				const nextImage = next.container.querySelector('img');
 
 				const currentBounds = currentVisibleImage.getBoundingClientRect();
