@@ -1,8 +1,16 @@
+// Mouse Track
+const projectImage = document.querySelector('.project-image');
+
+document.addEventListener('mousemove', ({ clientX, clientY }) => {
+	document.body.style = `--x: ${clientX}px, --y: ${clientY}px`;
+});
+
 // Page Transitions
 barba.init({
 	debug: true,
 	transitions: [
 		{
+			name: 'projectFlip',
 			from: {
 				route: '/',
 			},
