@@ -1,9 +1,11 @@
-// Mouse Track
-const projectImage = document.querySelector('.project-image');
+// All non-barba code will go in here
+function initializeScripts() {
+	document.addEventListener('mousemove', ({ clientX, clientY }) => {
+		document.body.style = `--x: ${clientX}px; --y: ${clientY}px;`;
+	});
+}
 
-document.addEventListener('mousemove', ({ clientX, clientY }) => {
-	document.body.style = `--x: ${clientX}px, --y: ${clientY}px`;
-});
+initializeScripts();
 
 // Page Transitions
 barba.init({
@@ -37,6 +39,10 @@ barba.init({
 
 				// Assign delta values as custom properties
 				nextImage.style = `--deltaX: ${deltaX}px; --deltaY: ${deltaY}px; --deltaW: ${deltaW}; --deltaH: ${deltaH};`;
+			},
+			after() {
+				// Re-initialize all scripts once the transition is finished
+				initializeScripts();
 			},
 		},
 	],
