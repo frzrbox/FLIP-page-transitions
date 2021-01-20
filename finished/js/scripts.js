@@ -19,7 +19,7 @@ barba.init({
 			to: {
 				namespace: ['project'],
 			},
-			enter({ current, next }) {
+			async enter({ current, next }) {
 				const currentVisibleImage = current.container.querySelector(
 					'.project-image'
 				);
