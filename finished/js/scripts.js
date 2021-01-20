@@ -8,6 +8,8 @@ function initializeScripts() {
 initializeScripts();
 
 // Page Transitions
+barba.use(barbaPrefetch);
+
 barba.init({
 	debug: true,
 	transitions: [
