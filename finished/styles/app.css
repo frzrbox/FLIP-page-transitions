@@ -61,6 +61,12 @@ img {
 	max-width: 1600px;
 }
 
+[data-barba='container'] {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+}
+
 .headline {
 	font-size: 3.5vw;
 }
@@ -96,8 +102,6 @@ img {
 
 /* Project Page */
 .project-hero {
-	--flip-duration: 1.2s;
-
 	display: flex;
 	flex-wrap: wrap;
 	align-items: flex-end;
@@ -107,44 +111,4 @@ img {
 	height: 60vh;
 	width: auto;
 	margin-right: 20px;
-	animation: heroFLIP var(--flip-duration) cubic-bezier(0.45, 0.05, 0.55, 0.95)
-		both;
-}
-
-.project-hero .content {
-	opacity: 1;
-	animation: fadeInUp 0.3s var(--flip-duration) both;
-}
-
-@keyframes fadeInUp {
-	0% {
-		opacity: 0;
-		transform: translateY(50px);
-	}
-}
-
-@keyframes heroFLIP {
-	0% {
-		--deltaW: var(--deltaW);
-		--deltaH: var(--deltaH);
-		--deltaX: var(--deltaX);
-
-		position: fixed;
-		top: 0;
-		left: 0;
-		transform-origin: top left;
-		transform: translate(var(--deltaX), var(--deltaY))
-			scale(var(--deltaW), var(--deltaH));
-	}
-	1% {
-		position: relative;
-	}
-	70% {
-		transform: translate(0, 0) scale(var(--deltaW), var(--deltaH));
-		transform-origin: bottom left;
-	}
-	100% {
-		transform: none;
-		transform-origin: bottom left;
-	}
 }
