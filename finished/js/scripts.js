@@ -54,15 +54,16 @@ barba.init({
 						y: deltaY,
 						scaleX: deltaW,
 						scaleY: deltaH,
-					})
-						.set(currentVisibleImage, {
-							visibility: 'hidden',
-						})
-						.set('.project-hero .content', { opacity: 0, y: 20 });
+					});
+					tl.set('.project-hero .content', { opacity: 0, y: 20 });
+					tl.set(currentVisibleImage, {
+						visibility: 'hidden',
+					});
 
 					tl.to(current.container, {
 						opacity: 0,
 					})
+
 						.to(nextImage, {
 							transformOrigin: 'bottom left',
 							x: 0,
