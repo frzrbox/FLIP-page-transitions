@@ -61,14 +61,15 @@ img {
 	max-width: 1600px;
 }
 
+.headline {
+	font-size: 3.5vw;
+}
+
+/* All barba containers will be position absolute */
 [data-barba='container'] {
 	height: 100%;
 	width: 100%;
 	position: absolute;
-}
-
-.headline {
-	font-size: 3.5vw;
 }
 
 /* Homepaged */
